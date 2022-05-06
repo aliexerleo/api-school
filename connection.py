@@ -1,16 +1,16 @@
 import psycopg2
 from psycopg2 import Error
-import os
+from decouple import config
 
 def create_connection():
     conn = None
     
     try:
         conn = psycopg2.connect(
-                host=os.getenv("POSTGRES_HOST"),
-                database=os.getenv("POSTGRES_DB"),
-                user=os.getenv("POSTGRES_USER"),
-                password=os.getenv("POSTGRES_PASSWORD"))
+                host=config('POSTGRES_HOST'),
+                database=config('POSTGRES_DB'),
+                user=config('POSTGRES_USER'),
+                password=config('POSTGRES_PASSWORD'))
 
 
 
